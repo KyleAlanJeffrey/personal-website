@@ -111,7 +111,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300 relative">
       {/* Animated Background Lines */}
       <div className="fixed inset-0 pointer-events-none">
         {/* Vertical Lines */}
@@ -350,38 +350,6 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                {/* Second Industrial Element */}
-                <div className="relative">
-                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto transform transition-all duration-500 hover:scale-105 relative">
-                    <div className="absolute inset-0 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
-                      {/* Diagonal Lines Pattern */}
-                      <div className="absolute inset-0 overflow-hidden">
-                        {Array.from({ length: 8 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute w-full h-0.5 bg-gray-400 dark:bg-gray-600 opacity-60"
-                            style={{
-                              top: `${i * 12.5}%`,
-                              transform: "rotate(45deg)",
-                              transformOrigin: "center",
-                              animationDelay: `${i * 0.2}s`,
-                              animation: "pulse 3s infinite",
-                            }}
-                          ></div>
-                        ))}
-                      </div>
-                      {/* Center Label */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span
-                          className="text-2xl md:text-4xl font-black text-gray-600 dark:text-gray-400 tracking-[0.2em]"
-                          style={{ fontFamily: "monospace" }}
-                        >
-                          02
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -487,29 +455,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-3 flex flex-col justify-end items-center lg:items-end">
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-red-500 flex items-center justify-center mb-8 transform transition-all duration-500 hover:scale-110 hover:bg-red-600 hover:shadow-lg border-2 border-red-700">
-                <div className="w-6 h-6 md:w-8 md:h-8 bg-white flex items-center justify-center transition-all duration-300 hover:rotate-45 border border-red-500">
-                  <div className="w-3 h-3 md:w-4 md:h-4 border-2 border-red-500"></div>
-                </div>
-              </div>
-
-              <Button
-                variant="ghost"
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 p-0 h-auto font-bold group transition-all duration-300 tracking-[0.2em]"
-                onClick={() => scrollToSection("projects")}
-                style={{ fontFamily: "monospace" }}
-              >
-                <span className="relative">
-                  NEW PROJECT
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
-                </span>
-                <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -558,9 +503,7 @@ export default function HomePage() {
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium">
-                A curated selection of my recent work, showcasing modern web
-                applications built with cutting-edge technologies and thoughtful
-                user experience design.
+                A curated selection of my recent personal projects.
               </p>
             </div>
 
@@ -622,8 +565,7 @@ export default function HomePage() {
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium">
-                Passionate about open source development and continuous
-                learning. Here's a snapshot of my recent coding activity and
+                Here's a snapshot of my recent coding activity and
                 contributions.
               </p>
 
@@ -874,9 +816,9 @@ export default function HomePage() {
 
             <div className="lg:col-span-6 text-center lg:text-left">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium">
-                Here's my journey as a developer, from learning the fundamentals
+                {/* Here's my journey as a developer, from learning the fundamentals
                 to building complex applications and leading teams to create
-                amazing digital experiences.
+                amazing digital experiences. */}
               </p>
             </div>
           </div>
@@ -934,9 +876,9 @@ export default function HomePage() {
 
             <div className="lg:col-span-6 text-center lg:text-left">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium">
-                I'm always excited to connect with fellow developers and work on
+                {/* I'm always excited to connect with fellow developers and work on
                 interesting projects. Drop me a line if you want to collaborate
-                or just chat about tech!
+                or just chat about tech! */}
               </p>
             </div>
           </div>
@@ -956,7 +898,7 @@ export default function HomePage() {
                       EMAIL
                     </h3>
                     <p className="text-gray-700 dark:text-gray-300 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                      hello@kyle.dev
+                      kyle.alan.jeffrey@gmail.com
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                       I'll respond within 24 hours
@@ -964,7 +906,10 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 group cursor-pointer p-4 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500">
+                <a
+                  href={"https://github.com/KyleAlanJeffrey"}
+                  className="flex items-start space-x-4 group cursor-pointer p-4 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500"
+                >
                   <div className="w-12 h-12 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-gray-600 dark:group-hover:border-gray-400">
                     <Github className="h-5 w-5 text-gray-700 dark:text-gray-300 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100" />
                   </div>
@@ -976,15 +921,18 @@ export default function HomePage() {
                       GITHUB
                     </h3>
                     <p className="text-gray-700 dark:text-gray-300 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                      @kyle-dev
+                      @KyleAlanJeffrey
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                       Check out my latest projects
                     </p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-start space-x-4 group cursor-pointer p-4 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500">
+                <a
+                  href={"https://www.linkedin.com/in/kyle-jeffrey-1651b5189/"}
+                  className="flex items-start space-x-4 group cursor-pointer p-4 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500"
+                >
                   <div className="w-12 h-12 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-gray-600 dark:group-hover:border-gray-400">
                     <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100" />
                   </div>
@@ -1002,7 +950,7 @@ export default function HomePage() {
                       Let's connect professionally
                     </p>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-start space-x-4 group cursor-pointer p-4 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500">
                   <div className="w-12 h-12 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-gray-600 dark:group-hover:border-gray-400">
@@ -1027,7 +975,12 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-7">
-              <form className="space-y-6">
+              <form className="space-y-6 relative p-3">
+                <div className="absolute left-0 top-0 w-full h-full cursor-not-allowed bg-gray-200 opacity-65">
+                  <div className="flex items-center justify-center h-full text-2xl font-bold text-gray-500 rotate-45 ">
+                    Under Construction
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
