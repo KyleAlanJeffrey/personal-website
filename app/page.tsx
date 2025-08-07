@@ -1,12 +1,84 @@
 "use client";
 
+import Project, { GithubRepoType } from "@/components/project";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { getAllCommits, getAllRepos } from "./api";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("home");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [githubRepos, setGithubRepos] = useState<GithubRepoType[]>([]);
+  const [workProjects, setWorkProjects] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [commits, setCommits] = useState([]);
+  const [jobsError, setJobsError] = useState(false);
+  const [workProjectsError, setWorkProjectsError] = useState(false);
+  const [bio, setBio] = useState("");
+
+  useEffect(() => {
+    const url = "https://github.com/Kylealanjeffrey";
+    fetch(url);
+    const accessToken = process.env.REACT_APP_GITHUB_API_KEY;
+    if (!accessToken) {
+      console.log("Token not grabbed");
+    }
+    // Get pinned repositories
+    getAllRepos().then((data) => {
+      const allRepos = data.map((repo) => {
+        repo.pinned = false;
+        let i = repo.topics.indexOf("pinned");
+        if (i > -1) {
+          repo.topics.splice(i, 1);
+          repo.pinned = true;
+        }
+        return repo;
+      });
+      setGithubRepos(allRepos);
+    });
+
+    // Get jobs
+    fetch(
+      `https://raw.githubusercontent.com/KyleAlanJeffrey/UpdatedWebsite/main/data/jobs.json`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setJobs(data["jobs"]);
+      })
+      .catch((error) => {
+        setJobsError(true);
+        console.log(error);
+      });
+
+    // Get work projects
+    fetch(
+      `https://raw.githubusercontent.com/KyleAlanJeffrey/UpdatedWebsite/main/data/work_projects.json`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setWorkProjects(data["projects"]);
+      })
+      .catch((error) => {
+        setWorkProjectsError(true);
+        console.log(error);
+      });
+
+    fetch(
+      `https://raw.githubusercontent.com/KyleAlanJeffrey/UpdatedWebsite/main/data/bio.txt`
+    )
+      .then((response) => response.text())
+      .then((data) => {
+        setBio(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    getAllCommits().then((data) => {
+      setCommits(data);
+    });
+  }, []);
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
@@ -506,133 +578,15 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="space-y-12">
-                <div className="group cursor-pointer p-6 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500 hover:shadow-lg">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3
-                      className="text-2xl font-black text-black dark:text-white transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      E-COMMERCE PLATFORM
-                    </h3>
-                    <div
-                      className="text-sm text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.2em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      01
-                    </div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                    Modern shopping experience with React & Next.js
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      REACT
-                    </span>
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      NEXT.JS
-                    </span>
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      TYPESCRIPT
-                    </span>
-                  </div>
-                </div>
-
-                <div className="group cursor-pointer p-6 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500 hover:shadow-lg">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3
-                      className="text-2xl font-black text-black dark:text-white transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      ANALYTICS DASHBOARD
-                    </h3>
-                    <div
-                      className="text-sm text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.2em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      02
-                    </div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                    Real-time data visualization and insights
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      VUE.JS
-                    </span>
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      D3.JS
-                    </span>
-                    <span
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      NODE.JS
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6"></div>
-
-            <div className="lg:col-span-6">
-              <div className="group cursor-pointer p-6 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500 hover:shadow-lg">
-                <div className="flex items-start justify-between mb-4">
-                  <h3
-                    className="text-2xl font-black text-black dark:text-white transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    MOBILE FITNESS APP
-                  </h3>
-                  <div
-                    className="text-sm text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.2em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    03
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                  Cross-platform fitness tracking application
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    REACT NATIVE
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    FIREBASE
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    REDUX
-                  </span>
-                </div>
-              </div>
+              {githubRepos.map((repo, index) =>
+                repo.pinned ? (
+                  <Project
+                    githubRepo={repo}
+                    key={`repo-${index}`}
+                    index={index}
+                  />
+                ) : null
+              )}
             </div>
           </div>
         </section>

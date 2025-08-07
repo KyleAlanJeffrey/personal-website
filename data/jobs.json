@@ -1,0 +1,72 @@
+{
+  "jobs": [
+    {
+      "title": "Senior Software Engineer",
+      "description": "Robotics Engineer, Full Stack Software Engineer:",
+      "skills": [
+        "Python",
+        "SaltStack",
+        "React",
+        "React Native",
+        "Expo",
+        "FastAPI",
+        "AWS",
+        "Gitlab",
+        "CI/CD",
+        "Linux",
+        "IOT",
+        "Node.js",
+        "Redux",
+        "Docker",
+        "Postgres",
+        "NestJS"
+      ],
+      "accomplishments": [
+        "SaltStack for Deploying versioned software stacks.",
+        "OS tooling and infrastructure for linux based IOT devices.",
+        "Dev OPS involving CI/CD on Gitlab.",
+        "React Native and Expo for Cross Platform Mobile App Development.",
+        "React for Web using Redux/React Router/React Query/ Next.js",
+        "Python for Backend API Development using FastAPI. ",
+        "AWS Cloud Management."
+      ],
+      "company": "Stout Industrial Technology",
+      "duration": " May '23 - Present"
+    },
+    {
+      "title": "Python Developer",
+      "description": "Software Engineer on the Impact Lab:",
+      "skills": [
+        "Python",
+        "Google 3",
+        "Google Cloud",
+        "Bash",
+        "Linux"
+      ],
+      "accomplishments": [
+        "Developed cloud infrastructure to replay a multiple robot service with graphic analysis.",
+        "Improved speed of services by up to 1000% with runtime analysis of application, using the snakeviz runtime analyzer.",
+        "Developed CLI to run application and bash tmux program to configure environment,improving startup time by at least 300%."
+      ],
+      "company": "Everday Robots @ Google X",
+      "duration": " Nov '21 - Jan '23"
+    },
+    {
+      "title": "Teleoperator Tactician",
+      "description": "As data collection coordinator:",
+      "skills": [
+        "Python",
+        "Google 3",
+        "Google Cloud",
+        "Bash",
+        "Linux"
+      ],
+      "accomplishments": [
+        "Collected, cleaned data, and conducted evaluations(e.g., biases, limitations) for ml models.",
+        "Developed graphical interface for data collection tasks, improving collection rates by at least 30%."
+      ],
+      "company": "FS Studio @ Google Brain",
+      "duration": "May '21 - Nov '21"
+    }
+  ]
+}

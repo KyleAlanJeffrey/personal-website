@@ -1,0 +1,2 @@
+# AddaPixel Writer
+This was a project to interact with the website https://addapixel.com, a recreation of reddits' 'the game' event. The goal was to reverse engineer the api and rewrite the client in Python to allow for drawing any picture to the public canvas. 
