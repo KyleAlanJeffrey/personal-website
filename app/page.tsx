@@ -8,6 +8,7 @@ import { Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getAllCommits, getAllRepos } from "./api";
 
+import Image from "next/image";
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("home");
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -319,39 +320,7 @@ export default function HomePage() {
             </div>
 
             {/* Center Content - Industrial Elements */}
-            <div className="lg:col-span-4 relative order-first lg:order-none">
-              <div className="flex lg:block gap-4 lg:gap-0 justify-center">
-                {/* Industrial Grid Pattern */}
-                <div className="relative mb-0 lg:mb-8">
-                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto transform transition-all duration-500 hover:scale-105 relative">
-                    <div className="absolute inset-0 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
-                      {/* Grid Pattern */}
-                      <div className="absolute inset-4 grid grid-cols-4 grid-rows-4 gap-2">
-                        {Array.from({ length: 16 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="bg-gray-300 dark:bg-gray-700 transition-all duration-300 hover:bg-gray-400 dark:hover:bg-gray-600"
-                            style={{
-                              animationDelay: `${i * 0.1}s`,
-                              animation: "pulse 2s infinite",
-                            }}
-                          ></div>
-                        ))}
-                      </div>
-                      {/* Center Label */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span
-                          className="text-2xl md:text-4xl font-black text-gray-600 dark:text-gray-400 tracking-[0.2em]"
-                          style={{ fontFamily: "monospace" }}
-                        >
-                          01
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="lg:col-span-4 relative order-first lg:order-none"></div>
 
             {/* Right Content - Mobile responsive */}
             <div className="lg:col-span-3 text-center lg:text-left">
@@ -360,7 +329,7 @@ export default function HomePage() {
                   className="text-2xl md:text-4xl font-black text-black dark:text-white mb-2 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300 tracking-[0.1em]"
                   style={{ fontFamily: "monospace" }}
                 >
-                  HOME
+                  {/* HOME */}
                 </h2>
                 <h2
                   className="text-2xl md:text-4xl font-black text-black dark:text-white mb-4 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300 tracking-[0.1em]"
@@ -370,7 +339,7 @@ export default function HomePage() {
                   className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-bold tracking-[0.2em]"
                   style={{ fontFamily: "monospace" }}
                 >
-                  AT
+                  {/* AT */}
                 </div>
                 <div
                   className="text-4xl md:text-6xl font-black text-black dark:text-white mb-4 transition-all duration-300 hover:scale-105 tracking-[0.1em]"
@@ -422,35 +391,60 @@ export default function HomePage() {
                 </span>
               </Button>
             </div>
-
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="w-48 h-48 md:w-64 md:h-64 transform transition-all duration-500 hover:scale-105 relative">
-                <div className="absolute inset-0 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
-                  {/* Circuit Pattern */}
-                  <div className="absolute inset-4">
-                    <div className="w-full h-full relative">
-                      {/* Horizontal lines */}
-                      <div className="absolute top-1/4 left-0 w-full h-0.5 bg-gray-500 dark:bg-gray-500"></div>
-                      <div className="absolute top-2/4 left-0 w-full h-0.5 bg-gray-500 dark:bg-gray-500"></div>
-                      <div className="absolute top-3/4 left-0 w-full h-0.5 bg-gray-500 dark:bg-gray-500"></div>
-                      {/* Vertical lines */}
-                      <div className="absolute top-0 left-1/4 w-0.5 h-full bg-gray-500 dark:bg-gray-500"></div>
-                      <div className="absolute top-0 left-2/4 w-0.5 h-full bg-gray-500 dark:bg-gray-500"></div>
-                      <div className="absolute top-0 left-3/4 w-0.5 h-full bg-gray-500 dark:bg-gray-500"></div>
-                      {/* Connection points */}
-                      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
-                      <div className="absolute top-2/4 left-3/4 w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
-                      <div className="absolute top-3/4 left-2/4 w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+            <div className="col-span-2" />
+            <div className="flex lg:block gap-4 lg:gap-0 justify-center">
+              {/* Industrial Grid Pattern */}
+              <div className="relative mb-0 lg:mb-8">
+                <div className="w-40 h-40 md:w-60 md:h-60 lg:w-96 lg:h-96 mx-auto transform transition-all duration-500 hover:scale-105 relative">
+                  <Image
+                    src="/meme.jpeg"
+                    alt="Industrial Element 1"
+                    className="absolute inset-0 w-40 h-40 md:w-60 md:h-60 lg:w-96 lg:h-96 object-cover left-0 top-0"
+                    width={400}
+                    height={400}
+                    priority
+                  />
+                  <div className="absolute inset-0 border-2 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
+                    {/* Grid Pattern */}
+                    <div className="absolute inset-4 grid grid-cols-4 grid-rows-4 gap-4">
+                      {Array.from({ length: 16 }).map((_, i) => {
+                        const rng = Math.floor(Math.random() * 4);
+                        let borderClass = "";
+                        switch (rng) {
+                          case 0:
+                            borderClass = "border-b-2";
+                            break;
+                          case 1:
+                            borderClass = "border-l-2";
+                            break;
+                          case 2:
+                            borderClass = "border-l-2";
+                            break;
+                          case 3:
+                            borderClass = "border-b-2";
+                            break;
+                        }
+                        return (
+                          <div
+                            key={i}
+                            className={`bg-gray-400 dark:bg-gray-600 transition-all duration-300 hover:bg-gray-400 dark:hover:bg-gray-600`}
+                            style={{
+                              animationDelay: `${i * 0.1}s`,
+                              animation: "pulse 2s infinite",
+                            }}
+                          ></div>
+                        );
+                      })}
                     </div>
-                  </div>
-                  {/* Center Label */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span
-                      className="text-2xl md:text-3xl font-black text-gray-600 dark:text-gray-400 tracking-[0.2em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      03
-                    </span>
+                    {/* Center Label */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span
+                        className="text-2xl md:text-4xl font-black text-gray-950 dark:text-gray-100 tracking-[0.2em]"
+                        style={{ fontFamily: "monospace" }}
+                      >
+                        01
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
