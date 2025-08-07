@@ -102,80 +102,9 @@ export default function HomePage() {
       </div>
 
       {/* Main Content */}
-      <main className="relative px-4 md:px-8 py-8 z-10">
+      <main className="relative px-4 md:px-8 z-10">
         {/* Left Sidebar Navigation - Hidden on mobile */}
-        <div className="hidden lg:block fixed left-0 top-1/2 -translate-y-1/2 space-y-16 -ml-2 z-20">
-          <button
-            onClick={() => scrollToSection("home")}
-            className={`block -rotate-90 origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
-              activeSection === "home"
-                ? "text-black dark:text-white"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-            style={{
-              transform: "rotate(-90deg) ",
-              fontFamily: "monospace",
-            }}
-          >
-            HOME
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className={`block -rotate-90 origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
-              activeSection === "projects"
-                ? "text-black dark:text-white"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-            style={{
-              transform: "rotate(-90deg)",
-              fontFamily: "monospace",
-            }}
-          >
-            PROJECTS
-          </button>
-          <button
-            onClick={() => scrollToSection("github")}
-            className={`block -rotate-90 origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
-              activeSection === "github"
-                ? "text-black dark:text-white"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-            style={{
-              transform: "rotate(-90deg)",
-              fontFamily: "monospace",
-            }}
-          >
-            GITHUB
-          </button>
-          <button
-            onClick={() => scrollToSection("work")}
-            className={`block -rotate-90 origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
-              activeSection === "work"
-                ? "text-black dark:text-white"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-            style={{
-              transform: "rotate(-90deg)",
-              fontFamily: "monospace",
-            }}
-          >
-            WORK
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className={`block -rotate-90 origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
-              activeSection === "contact"
-                ? "text-black dark:text-white"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-            style={{
-              transform: "rotate(-90deg)",
-              fontFamily: "monospace",
-            }}
-          >
-            CONTACT
-          </button>
-
+        <div className="hidden -rotate-90 lg:flex flex-row gap-3 items-center justify-center fixed left-0 h-full z-20 py-40 w-8">
           {/* Dark Mode Toggle in Vertical Bar */}
           <div className="pt-8">
             <Button
@@ -183,7 +112,6 @@ export default function HomePage() {
               size="icon"
               onClick={toggleDarkMode}
               className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-transparent hover:scale-110 transition-all duration-300 p-0 h-auto w-auto"
-              style={{ transform: "rotate(-90deg)" }}
             >
               {isDarkMode ? (
                 <Sun className="h-4 w-4" />
@@ -192,6 +120,71 @@ export default function HomePage() {
               )}
             </Button>
           </div>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className={`blockorigin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+              activeSection === "contact"
+                ? "text-black dark:text-white"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            }`}
+            style={{
+              fontFamily: "monospace",
+            }}
+          >
+            CONTACT
+          </button>
+          <button
+            onClick={() => scrollToSection("work")}
+            className={`block origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+              activeSection === "work"
+                ? "text-black dark:text-white"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            }`}
+            style={{
+              fontFamily: "monospace",
+            }}
+          >
+            WORK
+          </button>
+          <button
+            onClick={() => scrollToSection("github")}
+            className={`block  origin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+              activeSection === "github"
+                ? "text-black dark:text-white"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            }`}
+            style={{
+              fontFamily: "monospace",
+            }}
+          >
+            GITHUB
+          </button>
+          <button
+            onClick={() => scrollToSection("projects")}
+            className={`blocktext-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+              activeSection === "projects"
+                ? "text-black dark:text-white"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            }`}
+            style={{
+              fontFamily: "monospace",
+            }}
+          >
+            PROJECTS
+          </button>
+          <button
+            onClick={() => scrollToSection("home")}
+            className={`block whitespace-nowrap text-sm tracking-[0.3em] font-bold transition-all duration-300 hover:scale-105 ${
+              activeSection === "home"
+                ? "text-black dark:text-white"
+                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            }`}
+            style={{
+              fontFamily: "monospace",
+            }}
+          >
+            HOME
+          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -211,7 +204,7 @@ export default function HomePage() {
         </div>
 
         {/* Right Sidebar Text - Hidden on mobile */}
-        <div className="hidden lg:block fixed right-0 top-1/2 -translate-y-1/2 rotate-90 origin-center -mr-2 z-20">
+        <div className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 -rotate-90 origin-center -mr-24 z-20">
           <div
             className="text-sm text-gray-500 dark:text-gray-400 tracking-[0.3em] font-bold whitespace-nowrap transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-200"
             style={{ transform: "translateY(5px)", fontFamily: "monospace" }}
@@ -271,7 +264,7 @@ export default function HomePage() {
               <div className="flex lg:block gap-4 lg:gap-0 justify-center">
                 {/* Industrial Grid Pattern */}
                 <div className="relative mb-0 lg:mb-8">
-                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 mx-auto transform transition-all duration-500 hover:scale-105 relative">
+                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto transform transition-all duration-500 hover:scale-105 relative">
                     <div className="absolute inset-0 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
                       {/* Grid Pattern */}
                       <div className="absolute inset-4 grid grid-cols-4 grid-rows-4 gap-2">
@@ -298,10 +291,9 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-
                 {/* Second Industrial Element */}
                 <div className="relative">
-                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 mx-auto transform transition-all duration-500 hover:scale-105 relative">
+                  <div className="w-40 h-40 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto transform transition-all duration-500 hover:scale-105 relative">
                     <div className="absolute inset-0 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 transition-all duration-300 hover:border-gray-600 dark:hover:border-gray-400">
                       {/* Diagonal Lines Pattern */}
                       <div className="absolute inset-0 overflow-hidden">
@@ -341,14 +333,12 @@ export default function HomePage() {
                   className="text-2xl md:text-4xl font-black text-black dark:text-white mb-2 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300 tracking-[0.1em]"
                   style={{ fontFamily: "monospace" }}
                 >
-                  MODERN
+                  HOME
                 </h2>
                 <h2
                   className="text-2xl md:text-4xl font-black text-black dark:text-white mb-4 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300 tracking-[0.1em]"
                   style={{ fontFamily: "monospace" }}
-                >
-                  PROJECT
-                </h2>
+                ></h2>
                 <div
                   className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-bold tracking-[0.2em]"
                   style={{ fontFamily: "monospace" }}
@@ -381,9 +371,17 @@ export default function HomePage() {
 
             <div className="lg:col-span-4 text-center lg:text-left">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium">
-                I'm Kyle Jeffrey, a robotics and software engineer who bridges
-                the gap between hardware and software. I create intelligent
-                systems that interact with the physical world.
+                Hi I'm Kyle! I recieved my degree in robotics where I did a
+                Senior Thesis on simulating Milipede movements with cheap leg
+                actuators (See Projects Below). For 3 years I worked throughout
+                Googles robotics departments, getting robots to pickup kitchens
+                (see Project Saycan), dance (see Project Starling), and make
+                music (See Project Music Mode). After leaving Google, I've been
+                working at Stout Industrial Technology, empowering Farmers with
+                plant level data on their fields and improving their yield with
+                our autonomous smart cultivator what uses AI vision to detect
+                weeds in the field. In my free time I program odds and ends for
+                fun.
               </p>
 
               <Button
