@@ -1,6 +1,7 @@
 "use client";
 
 import Commit from "@/components/commit";
+import Job from "@/components/job";
 import Project, { GithubRepoType } from "@/components/project";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react";
@@ -178,21 +179,6 @@ export default function HomePage() {
       <main className="relative px-4 md:px-8 z-10">
         {/* Left Sidebar Navigation - Hidden on mobile */}
         <div className="hidden -rotate-90 lg:flex flex-row gap-3 items-center justify-center fixed left-0 h-full z-20 py-40 w-8">
-          {/* Dark Mode Toggle in Vertical Bar */}
-          <div className="pt-8">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleDarkMode}
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-transparent hover:scale-110 transition-all duration-300 p-0 h-auto w-auto"
-            >
-              {isDarkMode ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
           <button
             onClick={() => scrollToSection("contact")}
             className={`blockorigin-center text-sm tracking-[0.3em] font-bold transition-all duration-300 whitespace-nowrap hover:scale-105 ${
@@ -261,7 +247,7 @@ export default function HomePage() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden fixed top-4 right-4 z-50">
+        <div className="fixed top-4 right-4 z-50">
           <Button
             variant="ghost"
             size="icon"
@@ -682,7 +668,7 @@ export default function HomePage() {
                     ACTIVE
                   </div>
                 </div>
-                <div className="group border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500">
+                {/* <div className="group border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500">
                   <div
                     className="text-3xl font-black text-black dark:text-white mb-1 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
                     style={{ fontFamily: "monospace" }}
@@ -721,7 +707,7 @@ export default function HomePage() {
                   >
                     MERGED
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -896,276 +882,9 @@ export default function HomePage() {
           </div>
 
           <div className="space-y-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
-              <div className="lg:col-span-2 text-center lg:text-left">
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 tracking-[0.2em] font-bold mb-2 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  2022 - PRESENT
-                </div>
-                <div className="w-16 h-1 bg-gray-400 dark:bg-gray-600 mx-auto lg:mx-0 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gray-400 dark:bg-gray-600 transform -translate-x-full transition-transform duration-500 group-hover:translate-x-0"></div>
-                </div>
-                <div
-                  className="text-2xl font-black text-black dark:text-white mt-4 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  01
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 text-center lg:text-left">
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-2 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  SENIOR FRONTEND
-                </h3>
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-4 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  DEVELOPER
-                </h3>
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-bold tracking-[0.2em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  AT
-                </div>
-                <h4
-                  className="text-lg text-gray-700 dark:text-gray-300 mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-bold tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  TECHCORP SOLUTIONS
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                  Leading frontend development for enterprise applications,
-                  mentoring junior developers, and architecting scalable
-                  React-based solutions. Improved application performance by 40%
-                  and reduced bundle size by 30%.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    REACT
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    TYPESCRIPT
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    NEXT.JS
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    AWS
-                  </span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-3 flex justify-center lg:justify-start">
-                <div className="w-24 h-24 md:w-32 md:h-32 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:border-gray-600 dark:group-hover:border-gray-400">
-                  <div
-                    className="text-2xl md:text-3xl font-black text-gray-600 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    TC
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
-              <div className="lg:col-span-2 text-center lg:text-left">
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 tracking-[0.2em] font-bold mb-2 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  2020 - 2022
-                </div>
-                <div className="w-16 h-1 bg-gray-400 dark:bg-gray-600 mx-auto lg:mx-0 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gray-400 dark:bg-gray-600 transform -translate-x-full transition-transform duration-500 group-hover:translate-x-0"></div>
-                </div>
-                <div
-                  className="text-2xl font-black text-black dark:text-white mt-4 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  02
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 text-center lg:text-left">
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-2 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  FULL STACK
-                </h3>
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-4 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  DEVELOPER
-                </h3>
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-bold tracking-[0.2em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  AT
-                </div>
-                <h4
-                  className="text-lg text-gray-700 dark:text-gray-300 mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-bold tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  STARTUPXYZ
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                  Developed and maintained full-stack web applications using
-                  modern technologies. Built RESTful APIs, implemented
-                  authentication systems, and created responsive user
-                  interfaces. Collaborated with design team to deliver
-                  pixel-perfect implementations.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    VUE.JS
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    NODE.JS
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    MONGODB
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    DOCKER
-                  </span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-3 flex justify-center lg:justify-start">
-                <div className="w-24 h-24 md:w-32 md:h-32 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:border-gray-600 dark:group-hover:border-gray-400">
-                  <div
-                    className="text-2xl md:text-3xl font-black text-gray-600 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    SX
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
-              <div className="lg:col-span-2 text-center lg:text-left">
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 tracking-[0.2em] font-bold mb-2 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  2019 - 2020
-                </div>
-                <div className="w-16 h-1 bg-gray-400 dark:bg-gray-600 mx-auto lg:mx-0 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gray-400 dark:bg-gray-600 transform -translate-x-full transition-transform duration-500 group-hover:translate-x-0"></div>
-                </div>
-                <div
-                  className="text-2xl font-black text-black dark:text-white mt-4 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  03
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 text-center lg:text-left">
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-2 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  JUNIOR
-                </h3>
-                <h3
-                  className="text-2xl md:text-3xl font-black text-black dark:text-white mb-4 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  DEVELOPER
-                </h3>
-                <div
-                  className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-bold tracking-[0.2em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  AT
-                </div>
-                <h4
-                  className="text-lg text-gray-700 dark:text-gray-300 mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-bold tracking-[0.1em]"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  DIGITAL AGENCY PRO
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 font-medium">
-                  Started my professional journey building websites and web
-                  applications for various clients. Gained experience in
-                  frontend technologies, version control, and agile development
-                  practices. Contributed to over 15 client projects.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    JAVASCRIPT
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    HTML/CSS
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    WORDPRESS
-                  </span>
-                  <span
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-bold border border-gray-400 dark:border-gray-600 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 hover:scale-105 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    GIT
-                  </span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-3 flex justify-center lg:justify-start">
-                <div className="w-24 h-24 md:w-32 md:h-32 border-2 border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:border-gray-600 dark:group-hover:border-gray-400">
-                  <div
-                    className="text-2xl md:text-3xl font-black text-gray-600 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200 tracking-[0.1em]"
-                    style={{ fontFamily: "monospace" }}
-                  >
-                    DA
-                  </div>
-                </div>
-              </div>
-            </div>
+            {jobs.map((job, index) => (
+              <Job key={index} job={job} index={index} />
+            ))}
           </div>
         </section>
 
