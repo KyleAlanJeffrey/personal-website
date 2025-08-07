@@ -1,5 +1,6 @@
 "use client";
 
+import Commit from "@/components/commit";
 import Project, { GithubRepoType } from "@/components/project";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react";
@@ -18,9 +19,7 @@ export default function HomePage() {
   const [bio, setBio] = useState("");
 
   useEffect(() => {
-    const url = "https://github.com/Kylealanjeffrey";
-    fetch(url);
-    const accessToken = process.env.REACT_APP_GITHUB_API_KEY;
+    const accessToken = process.env.NEXT_PUBLIC_GITHUB_API_TOKEN;
     if (!accessToken) {
       console.log("Token not grabbed");
     }
@@ -76,6 +75,8 @@ export default function HomePage() {
       });
 
     getAllCommits().then((data) => {
+      console.log(`Found ${data.length} commits`);
+      console.log(data);
       setCommits(data);
     });
   }, []);
@@ -646,7 +647,7 @@ export default function HomePage() {
                     className="text-3xl font-black text-black dark:text-white mb-1 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
                     style={{ fontFamily: "monospace" }}
                   >
-                    247
+                    {commits.length ? commits.length : "NA"}
                   </div>
                   <div
                     className="text-sm text-gray-600 dark:text-gray-400 tracking-[0.2em] font-bold transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200"
@@ -666,7 +667,7 @@ export default function HomePage() {
                     className="text-3xl font-black text-black dark:text-white mb-1 transition-all duration-300 group-hover:scale-105 tracking-[0.1em]"
                     style={{ fontFamily: "monospace" }}
                   >
-                    18
+                    {githubRepos.length ? githubRepos.length : "NA"}
                   </div>
                   <div
                     className="text-sm text-gray-600 dark:text-gray-400 tracking-[0.2em] font-bold transition-all duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200"
@@ -725,7 +726,7 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="w-full h-96 bg-gray-50 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-500 dark:hover:border-gray-500">
+              <div className="w-full bg-gray-50 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-500 dark:hover:border-gray-500">
                 <div className="flex items-center justify-between mb-6">
                   <h3
                     className="text-xl font-black text-black dark:text-white transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300 tracking-[0.1em]"
@@ -734,7 +735,7 @@ export default function HomePage() {
                     RECENT ACTIVITY
                   </h3>
                   <div
-                    className="text-sm text-gray-500 dark:text-gray-400 animate-pulse font-bold tracking-[0.2em]"
+                    className="text-sm text-red-500 animate-pulse font-bold tracking-[0.2em]"
                     style={{ fontFamily: "monospace" }}
                   >
                     LIVE
@@ -743,75 +744,9 @@ export default function HomePage() {
 
                 {/* Commit Activity Visualization */}
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-center space-x-4 group cursor-pointer p-2 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <div className="w-4 h-4 bg-gray-600 dark:bg-gray-400 transition-all duration-300 group-hover:scale-110"></div>
-                    <div className="flex-1">
-                      <div
-                        className="text-sm text-black dark:text-white font-bold transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.05em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        UPDATED PORTFOLIO DESIGN
-                      </div>
-                      <div
-                        className="text-xs text-gray-600 dark:text-gray-400 font-bold tracking-[0.1em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        2 HOURS AGO • MAIN BRANCH
-                      </div>
-                    </div>
-                    <div
-                      className="text-xs text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      +24 -8
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4 group cursor-pointer p-2 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <div className="w-4 h-4 bg-gray-500 dark:bg-gray-500 transition-all duration-300 group-hover:scale-110"></div>
-                    <div className="flex-1">
-                      <div
-                        className="text-sm text-black dark:text-white font-bold transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.05em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        ADDED NEW API ENDPOINTS
-                      </div>
-                      <div
-                        className="text-xs text-gray-600 dark:text-gray-400 font-bold tracking-[0.1em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        1 DAY AGO • FEATURE/API
-                      </div>
-                    </div>
-                    <div
-                      className="text-xs text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      +156 -12
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4 group cursor-pointer p-2 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <div className="w-4 h-4 bg-gray-700 dark:bg-gray-300 transition-all duration-300 group-hover:scale-110"></div>
-                    <div className="flex-1">
-                      <div
-                        className="text-sm text-black dark:text-white font-bold transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 tracking-[0.05em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        REFACTORED AUTH SYSTEM
-                      </div>
-                      <div
-                        className="text-xs text-gray-600 dark:text-gray-400 font-bold tracking-[0.1em]"
-                        style={{ fontFamily: "monospace" }}
-                      >
-                        3 DAYS AGO • SECURITY/AUTH
-                      </div>
-                    </div>
-                    <div
-                      className="text-xs text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.1em]"
-                      style={{ fontFamily: "monospace" }}
-                    >
-                      +89 -45
-                    </div>
-                  </div>
+                  {commits.slice(0, 5).map((commit, index) => (
+                    <Commit key={index} commit={commit} index={index} />
+                  ))}
                 </div>
 
                 {/* Language Stats */}

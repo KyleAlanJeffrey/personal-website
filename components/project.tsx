@@ -36,7 +36,19 @@
 //                   );
 //                 } else {
 //                   return null;
+
 //                 }
+const COLOR_PALETTE = [
+  "bg-purple-400",
+  "bg-orange-400",
+  "bg-blue-400",
+  "bg-green-400",
+  "bg-red-400",
+  "bg-yellow-400",
+  "bg-pink-400",
+  "bg-teal-400",
+  "bg-indigo-400",
+];
 export type GithubRepoType = {
   pinned: boolean;
   name: string;
@@ -44,10 +56,12 @@ export type GithubRepoType = {
   topics: string[];
   description: string;
 };
-
+function getProjectColor(index: number): string {
+  return COLOR_PALETTE[index % COLOR_PALETTE.length];
+}
 function Project(props: { githubRepo: GithubRepoType; index: number }) {
   return (
-    <div className="space-y-12 p-2">
+    <a href={props.githubRepo.homepage} className="space-y-12 p-2">
       <div className="group cursor-pointer p-6 border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:border-gray-500 dark:hover:border-gray-500 hover:shadow-lg">
         <div className="flex items-start justify-between mb-4">
           <h3
@@ -78,7 +92,7 @@ function Project(props: { githubRepo: GithubRepoType; index: number }) {
           ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

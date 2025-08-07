@@ -8,6 +8,33 @@ const myGithubUsernames = [
   "business kyle",
   "kylejeffrey",
 ];
+// https://api.github.com/repos/python/mypy/compare/4eff613a6c96579d11dad72e63200b74afc39433…2b58c5f5c142588b7b944f3b79a0371378da3db6
+
+export async function getCommitDiffToMain(
+  repoPath: string,
+  parentSha: string,
+  sha: string
+) {
+  if (!accessToken) {
+    console.error("No GitHub access token found.");
+    return;
+  }
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${repoPath}/compare/${parentSha}...${sha}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching repos: ${error}`);
+    return;
+  }
+}
 
 export async function getAllRepos() {
   if (!accessToken) {
