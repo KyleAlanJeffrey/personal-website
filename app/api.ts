@@ -1,3 +1,5 @@
+import { GitHubCompareResponse } from "./types";
+
 const username = "Kylealanjeffrey";
 const accessToken = process.env.NEXT_PUBLIC_GITHUB_API_TOKEN;
 
@@ -8,13 +10,12 @@ const myGithubUsernames = [
   "business kyle",
   "kylejeffrey",
 ];
-// https://api.github.com/repos/python/mypy/compare/4eff613a6c96579d11dad72e63200b74afc39433…2b58c5f5c142588b7b944f3b79a0371378da3db6
 
 export async function getCommitDiffToMain(
   repoPath: string,
   parentSha: string,
   sha: string
-) {
+): Promise<GitHubCompareResponse> {
   if (!accessToken) {
     console.error("No GitHub access token found.");
     return;

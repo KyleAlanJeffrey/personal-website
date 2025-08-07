@@ -1,4 +1,5 @@
 import { getCommitDiffToMain } from "@/app/api";
+import { GitHubCompareResponse } from "@/app/types";
 import { useEffect, useState } from "react";
 
 const COLOR_PALETTE = [
@@ -41,12 +42,12 @@ export type CommitType = {
   }[];
 };
 
-export type CommitCompareType = {
-  title?: string;
-  dateString?: string;
-  branch?: string;
-  diffString?: string;
-};
+function constructDiffString(files: GitHubCompareResponse["files"]) {
+  if (!files || files.length === 0) return { add: "", del: "" };
+  let adds = files.reduce((acc, file) => acc + (file.additions || 0), 0);
+  let dels = files.reduce((acc, file) => acc + (file.deletions || 0), 0);
+  return { add: `+${adds}`, del: `-${dels}` };
+}
 export function getCommitColor(index: number): string {
   return COLOR_PALETTE[index % COLOR_PALETTE.length];
 }
@@ -64,19 +65,27 @@ function formatDateToRelative(date: Date): string {
   if (minutes > 0) return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
   return `${seconds} second${seconds > 1 ? "s" : ""} ago`;
 }
-
 function Commit(props: { commit: CommitType; index: number }) {
-  const [commitDiff, setCommitDiff] = useState<CommitCompareType>({});
+  const [commitDiff, setCommitDiff] = useState<GitHubCompareResponse>({});
   const [repoName, setRepoName] = useState("");
   useEffect(() => {
-    getCommitDiffToMain(
-      "KyleAlanJeffrey/personal-website",
-      props.commit.sha,
-      props.commit.sha
-    );
-    setRepoName(props.commit.html_url.split("/")[4]);
+    const _repoName =
+      props.commit.html_url.split("/")[3] +
+      "/" +
+      props.commit.html_url.split("/")[4];
+    if (props.commit.parents.length > 0 && props.commit.sha) {
+      getCommitDiffToMain(
+        _repoName,
+        props.commit.parents[0].sha,
+        props.commit.sha
+      ).then((data) => {
+        setCommitDiff(data);
+      });
+    }
+    setRepoName(_repoName);
   }, [props.commit]);
   const color = getCommitColor(props.index);
+  const diff = constructDiffString(commitDiff.files);
   return (
     <a
       href={props.commit.html_url}
@@ -101,10 +110,11 @@ function Commit(props: { commit: CommitType; index: number }) {
         </div>
       </div>
       <div
-        className="text-xs text-gray-500 dark:text-gray-400 transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.1em]"
+        className="text-xs transition-all duration-300 group-hover:text-gray-700 dark:group-hover:text-gray-300 font-bold tracking-[0.1em]"
         style={{ fontFamily: "monospace" }}
       >
-        {/* {props.commit.diffString} */}
+        <span className="text-green-400">{diff.add}</span>{" "}
+        <span className="text-red-400">{diff.del}</span>
       </div>
     </a>
   );
